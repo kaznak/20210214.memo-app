@@ -36,3 +36,11 @@ model Session {
   publicData         String?
   privateData        String?
 }
+
+model Memo {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  text      String   
+  links     Memo[]   
+}
