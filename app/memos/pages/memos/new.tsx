@@ -13,9 +13,9 @@ const NewMemoPage: BlitzPage = () => {
 
       <MemoForm
         initialValues={{}}
-        onSubmit={async () => {
+        onSubmit={async (event) => {
           try {
-            const memo = await createMemoMutation({ data: { name: "MyName" } })
+            const memo = await createMemoMutation({ data: { text: event.target[0].value } })
             alert("Success!" + JSON.stringify(memo))
             router.push(`/memos/${memo.id}`)
           } catch (error) {

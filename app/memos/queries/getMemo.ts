@@ -6,7 +6,7 @@ type GetMemoInput = Pick<Prisma.FindFirstMemoArgs, "where">
 export default async function getMemo({ where }: GetMemoInput, ctx: Ctx) {
   ctx.session.authorize()
 
-  const memo = await db.memo.findFirst({ where })
+  const memo = await db.memo.findFirst({ where, include: { links: true } })
 
   if (!memo) throw new NotFoundError()
 

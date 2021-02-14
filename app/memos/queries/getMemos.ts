@@ -14,6 +14,7 @@ export default async function getMemos(
     orderBy,
     take,
     skip,
+    include: { links: true },
   })
 
   const count = await db.memo.count()

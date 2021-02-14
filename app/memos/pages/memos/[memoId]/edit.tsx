@@ -18,13 +18,13 @@ export const EditMemo = () => {
 
       <MemoForm
         initialValues={memo}
-        onSubmit={async () => {
+        onSubmit={async (event) => {
           try {
             const updated = await updateMemoMutation({
               where: { id: memo.id },
-              data: { name: "MyNewName" },
+              data: { text: event.target[0].value },
             })
-            await setQueryData(updated)
+            await setQueryData({ ...memo, ...updated })
             alert("Success!" + JSON.stringify(updated))
             router.push(`/memos/${updated.id}`)
           } catch (error) {

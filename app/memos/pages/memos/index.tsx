@@ -19,15 +19,28 @@ export const MemosList = () => {
 
   return (
     <div>
-      <ul>
-        {memos.map((memo) => (
-          <li key={memo.id}>
-            <Link href={`/memos/${memo.id}`}>
-              <a>{memo.name}</a>
+      <table>
+        <thead>
+          <th>ID</th>
+          <th>createdAt</th>
+          <th>updatedAt</th>
+          <th>text</th>
+          <th>links</th>
+        </thead>
+        <tbody>
+          {memos.map((memo) => (
+            <Link key={memo.id} href={`/memos/${memo.id}`}>
+              <tr key={memo.id}>
+                <td>{memo.id}</td>
+                <td>{memo.createdAt.toString()}</td>
+                <td>{memo.updatedAt.toString()}</td>
+                <td>{memo.text}</td>
+                <td>{memo.links.map((link) => link.id).join(", ")}</td>
+              </tr>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </tbody>
+      </table>
 
       <button disabled={page === 0} onClick={goToPreviousPage}>
         Previous
