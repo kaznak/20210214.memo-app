@@ -2,6 +2,7 @@
   "name": "memo-app",
   "version": "1.0.0",
   "scripts": {
+    "format": "prettier --write .",
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "build": "blitz build",
